@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Page for Sly ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      color: #ff3399;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 5px solid #ff99cc;
+    }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    #yes {
+      background-color: #ff3399;
+      color: white;
+    }
+    #no {
+      background-color: #cccccc;
+      color: black;
+      position: relative;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: floatUp 4s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+      100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hey Sly ❤️</h1>
+  <img src="https://i.imgur.com/rVKpLWJ.jpeg" alt="Her Picture">
+
+  <div class="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <audio autoplay loop>
+    <source src="Ruger Hypes on Blue.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const noButton = document.getElementById('no');
+    const yesButton = document.getElementById('yes');
+
+    // Make "No" button move randomly
+    noButton.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = 'absolute';
+      noButton.style.left = x + 'px';
+      noButton.style.top = y + 'px';
+    });
+
+    // Yes button message
+    yesButton.addEventListener('click', () => {
+      alert('Yay! You said yes ❤️');
+    });
+
+    // Create floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 500);
+  </script>
+
+</body>
+  </html>
